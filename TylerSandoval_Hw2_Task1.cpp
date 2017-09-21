@@ -1,4 +1,4 @@
-// File: TylerSandovalHw2_Task1
+// File: TylerSandoval_Hw2_Task1
 // Created by Tyler Sandoval on 9/19/2017 for CS1410.
 // Copyright (c) 2017 WSU
 
@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
      * 3) "the second house is cheaper"
      * 4) "invalid comparison value there must be a bug"
      */
+
+    // Decides the end output based on the results of the ComparePrices function
     switch (comparison)
     {
         case 1:
@@ -71,6 +73,8 @@ int main(int argc, char* argv[])
 }
 
 /* Function Definitions */
+
+// Allow the user to assign values to the housing information
 struct house InputHouse()
 {
     struct house h;
@@ -85,6 +89,7 @@ struct house InputHouse()
     return h;
 }
 
+// Print out the housing information for both houses to the user
 void PrintHouse(int houseNum, struct house h)
 {
     cout << "House Number: " << houseNum << endl;
@@ -93,6 +98,8 @@ void PrintHouse(int houseNum, struct house h)
     cout << "House price: " << h.price << endl;
 }
 
+// Use if statements to compare housing prices, outputs are
+// returned as scenarios for the switch statement
 int ComparePrices(struct house h1, struct house h2)
 {
     int compare;
