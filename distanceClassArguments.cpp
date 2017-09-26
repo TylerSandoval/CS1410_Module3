@@ -19,9 +19,10 @@ private:
     int feet;
     float inches;
 public:
-    // Constructor
+    // Constructor with no arguments
     Distance(): feet(0), inches(0) {}
-    Distance(int x, float y): feet(x), inches(y) {}
+    // Constructor with two arguments
+    Distance(int ft, float in): feet(ft), inches(in) {}
     void setDist(int a, float b)
     {
         feet = a;
@@ -60,6 +61,9 @@ int main(void)
 
     d4.add_dist(d2, d3);
     cout << "\nd4 = ";
+    d4.showDist();
+    d4.add_dist_tome(d2);
+    cout << "\nd4 new = ";
     d4.showDist();
     // Access a public data member
 
