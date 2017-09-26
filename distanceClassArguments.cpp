@@ -18,11 +18,20 @@ class Distance
 private:
     int feet;
     float inches;
+    // Every object shares this variable:
+    static int count;    // One variable per CLASS
 public:
     // Constructor with no arguments
-    Distance(): feet(0), inches(0) {}
+    Distance(): feet(0), inches(0)
+    {
+        count++;
+    }
     // Constructor with two arguments
-    Distance(int ft, float in): feet(ft), inches(in) {}
+    Distance(int ft, float in): feet(ft), inches(in)
+    {
+        count++;
+    }
+
     void setDist(int a, float b)
     {
         feet = a;
@@ -41,7 +50,12 @@ public:
     }
     void add_dist(Distance d1,Distance d2);
     Distance add_dist_tome(Distance d1);
+    int getCount()
+    {
+        return count;
+    }
 };
+int Distance::count = 0;
 // Prototypes
 
 // Main Program Program
@@ -51,15 +65,18 @@ int main(void)
     Distance d1, d4;
     cout << "\nd1 = ";
     d1.showDist();
+    cout << "Count is " << d1.getCount() << endl;
     // Use the setDist method to set/access data
-    Distance d2(8, 2);
-    Distance d3(2, 4);
+    Distance d2(8,2);
+    cout << "Count is " << d1.getCount() << endl;
+    Distance d3(2,4);
     cout << "\nd2 = ";
     d2.showDist();
+    cout << "Count is " << d1.getCount() << endl;
     cout << "\nd3 = ";
     d3.showDist();
 
-    d4.add_dist(d2, d3);
+    d4.add_dist(d2,d3);
     cout << "\nd4 = ";
     d4.showDist();
     d4.add_dist_tome(d2);
@@ -90,10 +107,10 @@ Distance Distance::add_dist_tome(Distance d1)
 {
     Distance temp; // initial values 0,0
     temp.inches = inches + d1.inches;
-    if(temp.inches >= 12)
+    if(temp.inches >= 12.0)
     {
         inches -= 12.0;
-        temp.feet++;
+        temp.feet += 1;
     }
     temp.feet += feet + d1.feet;
     return temp;
